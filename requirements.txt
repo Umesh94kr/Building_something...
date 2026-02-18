@@ -2,6 +2,7 @@
 openai-whisper
 pywhispercpp
 sounddevice 
+soundfile
 
 # General
 scipy 
