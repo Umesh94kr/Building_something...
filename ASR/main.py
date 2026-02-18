@@ -1,6 +1,7 @@
 from pywhispercpp.model import Model 
 from recorder import record_audio
 
+# downloads the model on your machine
 model = Model('tiny.en')
 
 def transcribe():

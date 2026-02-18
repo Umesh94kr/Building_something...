@@ -1,5 +1,8 @@
+# For ASR 
 openai-whisper
 pywhispercpp
 sounddevice 
+
+# General
 scipy 
 numpy
