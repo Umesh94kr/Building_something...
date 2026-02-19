@@ -7,3 +7,6 @@ soundfile
 # General
 scipy 
 numpy
+
+# Text to Speech (TTS) 
+TTS

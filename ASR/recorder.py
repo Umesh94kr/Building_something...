@@ -45,7 +45,7 @@ def record_until_silence(
                     if silence_counter >= silence_chunks_required:
                         print("🛑 Silence detected. Stopping.")
                         break
-
+                        
     audio = np.concatenate(audio_buffer)
     filepath = os.path.join(BASE_PATH, 'output.wav')
     sf.write(filepath, audio, sample_rate)
