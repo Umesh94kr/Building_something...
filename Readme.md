@@ -4,6 +4,7 @@ I want to RUN a lite model on my 8GB RAM laptop
 
 ##### Functionality to stop recording audio when there is a pause of let say 2 seconds
 
+
 Steps to reproduce : 
 `git clone `
 
