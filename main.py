@@ -13,7 +13,9 @@ llm = ChatOllama(
 if __name__ == "__main__":
     quest = invoke_ASR()
     # using LLM to correct words spoken by human
-    template = "Correct the words spoken by user in query : {quest}"
+    template = "Correct the words spoken by user raw voice input : {raw_voice_input}, and you need to convert it to clean voice input of user.  " \
+    "Examples : quest -> i AM GOD, what are u doin" \
+    "Clean voice input -> I am good, what are you doing?"
     prompt = PromptTemplate(
         template=template,
         input_variables=['quest']
