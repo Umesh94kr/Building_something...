@@ -10,3 +10,7 @@ numpy
 
 # Text to Speech (TTS) 
 TTS
+
+# langchain 
+langchain_ollama
+langchain-core
