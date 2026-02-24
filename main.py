@@ -32,5 +32,13 @@ if __name__ == "__main__":
     question = chain.invoke({'raw_voice_input' : quest})
     print(f"Question : {question.clean_voice}")
 
-    answer = "Hey Buddy! I'm doing good."
-    invoke_TTS(answer)
+    template2 = "Given a user question, you need to answer it like a second human. user question : {user_question}"
+
+    chat_prompt = PromptTemplate(
+        template=template2,
+        input_variables=['user_question']
+    )
+
+    chain2 = chat_prompt | llm 
+    response = chain2.invoke({'user_question' : question.clean_voice})
+    invoke_TTS(response.content)
