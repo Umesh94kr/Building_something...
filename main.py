@@ -13,32 +13,32 @@ llm = ChatOllama(
 from pydantic import BaseModel, Field
 from typing import Annotated
 
-class StructuredOutput(BaseModel):
-    clean_voice : Annotated[str, Field(description="Raw voice input cleaned by LLM.")]
+# class StructuredOutput(BaseModel):
+#     clean_voice : Annotated[str, Field(description="Raw voice input cleaned by LLM.")]
 
 if __name__ == "__main__":
     quest = invoke_ASR()
     # using LLM to correct words spoken by human
-    template = "Correct the words spoken by user raw voice input : {raw_voice_input}, and you need to convert it to clean voice input of user.  " \
-    "Examples : Raw voice input -> i AM GOD, what are u doin" \
-    "Clean voice input -> I am good, what are you doing?"
-    prompt = PromptTemplate(
-        template=template,
-        input_variables=['raw_voice_input']
-    )
+    # template = "Correct the words spoken by user raw voice input : {raw_voice_input}, and you need to convert it to clean voice input of user.  " \
+    # "Examples : Raw voice input -> i AM GOD, what are u doin" \
+    # "Clean voice input -> I am good, what are you doing?"
+    # prompt = PromptTemplate(
+    #     template=template,
+    #     input_variables=['raw_voice_input']
+    # )
 
-    llm_str = llm.with_structured_output(StructuredOutput)
-    chain = prompt | llm_str
-    question = chain.invoke({'raw_voice_input' : quest})
-    print(f"Question : {question.clean_voice}")
+    # llm_str = llm.with_structured_output(StructuredOutput)
+    # chain = prompt | llm_str
+    # question = chain.invoke({'raw_voice_input' : quest})
+    # print(f"Question : {question.clean_voice}")
 
-    template2 = "Given a user question, you need to answer it like a second human. user question : {user_question}"
+    chat_template = "Given a user question, you need to answer it like a second human. user question : {user_question}"
 
     chat_prompt = PromptTemplate(
-        template=template2,
+        template=chat_template,
         input_variables=['user_question']
     )
 
-    chain2 = chat_prompt | llm 
-    response = chain2.invoke({'user_question' : question.clean_voice})
+    chain = chat_prompt | llm 
+    response = chain.invoke({'user_question' : quest})
     invoke_TTS(response.content)
