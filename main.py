@@ -45,3 +45,6 @@ if __name__ == "__main__":
         chat_history.append("AI response: " + response.content)
         user_question = invoke_ASR()
         chat_history.append("User question: " + user_question)
+    response = "Let me know if anything I can do. Thanks"
+    invoke_TTS(response)
+    chat_history.append("AI response: " + response)
